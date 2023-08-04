@@ -219,3 +219,7 @@
 .active {
   @apply bg-indigo text-white
 }
+.clear {
+  @apply inline-block relative border-b-2 border-indigo hover:border-transparent after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bg-indigo after:origin-bottom-left 
+  hover:after:duration-1000 after:bottom-[-2px] after:left-0 hover:after:scale-x-100 hover:after:origin-bottom-left
+}

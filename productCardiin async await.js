@@ -3,19 +3,28 @@ import HoveringImage from "@components/HoveringImage";
 import HoverShopIcon from "./HoverShopIcon";
 
 
+export async function getProducts () {
+    const res = await fetch('http://66.181.175.237:8881/api/product')
+    if(!res.ok) {
+        throw new Error ("fail")
+    }
+    return res.json()
+}
 
-function ProductCard({products, filtername}) {
+async function ProductCard({filterName}) {
+    const products = await getProducts();
     let filteredProducts;
-    if(filtername == "newborn") {
+    if(filterName == "newborn") {
         filteredProducts =products.filter((product) => product.info_two[0] == 1 || product.info_two[0]==2 || product.info_two[0]==0);
-    } else if (filtername == "toddler") {
+    } else if (filterName == "toddler") {
         filteredProducts =products.filter((product) => product.info_two[0] == 7);
-    } else if (filtername == "baby") {
+    } else if (filterName == "baby") {
         filteredProducts =products.filter((product) => product.info_two[0] == 3 || product.info_two[0]==4 || product.info_two[0]==5 || product.info_two[0]==6);
     } else filteredProducts = products
+
     return (
         <>
-        { filteredProducts && filteredProducts.map((product) => (
+        {filteredProducts.map((product) => (
                 <div className="card">
                     <section className="top-section">
                         <div className="product-image">                    

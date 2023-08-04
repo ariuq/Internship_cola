@@ -12,9 +12,9 @@ const HoverShopIcon = () => {
     <button onMouseLeave={onMouseLeave} onMouseEnter={onMouseEnter} className="shopIcon">
                         {
                             isHover ? (
-                                <Image src={shopIconHover} width={20} height={20}/>
+                                <Image src={shopIconHover} width={20} height={20} alt="hovered shop icon"/>
                             ) : (
-                                <Image src={shopIcon} width={20} height={20}/>
+                                <Image src={shopIcon} width={20} height={20} alt="shop icon"/>
                             )
                         } 
                         <p>Худалдаж авах</p>

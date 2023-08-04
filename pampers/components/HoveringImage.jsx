@@ -10,13 +10,13 @@ const HoveringImage = ({src}) => {
   return (
     <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className="flex items-center justify-center">
     {isHovering? (
-        <Image src={src} className="ease-in-out duration-500" style={{
+        <Image src={src} alt="hovered image" className="ease-in-out duration-500" style={{
             width: '90%',
             height: 'auto'
         }}/>
 
     ) : (
-        <Image src={src} className="ease-in-out duration-500" style={{
+        <Image src={src} alt="images" className="ease-in-out duration-500" style={{
             width: '80%',
             height: 'auto'
         }} />

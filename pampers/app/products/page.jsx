@@ -1,3 +1,4 @@
+
 import Image from "next/image"
 import productBanner from "../../public/assets/images/product_banner.webp";
 import DiaperCalculator from './components/DiaperCalculator';
@@ -5,9 +6,8 @@ import FilterBoard from "./components/FilterBoard";
 import ProductCard from "./components/ProductCard";
 
 
-const page = () => {
-  
-
+const page = async ({}) => {
+  const products = await getProducts();
   
   return (
     <section>
@@ -15,21 +15,38 @@ const page = () => {
         <Image src={productBanner} className="productBannerImage" style={{
           width: 'auto',
           height: '100%',
-        }} />
+        }}  alt="product banner"/>
         <h1 className="productBannerDescription">Up to 100% Leak-Free Nights</h1>
       </div >
-      <div className="flex flex-row w-full">
-        <div className="flex basis-1/3"><FilterBoard/></div>
-      <div className="w-full flex flex-col">
-        <section className="card-container">
-           <ProductCard/>
-        </section>
-       
-        <DiaperCalculator/> </div>
-      </div>  
+      <FilterBoard products={products}/>
       
        </section>
   )
 }
+export default page;
 
-export default page
+// export const getStaticPaths = async () => {
+  
+//   return {
+//     paths: [
+//       {
+//         params: {
+//           name: 'next.js',
+//         },
+//       },
+//     ], 
+//     fallback: true,
+//   }
+// }
+// export const getServerSideProps = async () => {
+//   const res = await fetch('http://66.181.175.237:8881/api/product')
+//   const products = await res.json()
+//   return {props: {...products,},}
+// }
+export async function getProducts () {
+  const res = await fetch('http://66.181.175.237:8881/api/product')
+  if(!res.ok) {
+      throw new Error ("fail")
+  }
+  return res.json()
+}

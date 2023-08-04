@@ -1,23 +1,21 @@
 'use client';
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter} from "next/navigation";
 import { filterItems } from "./Filter";
-import { test } from "./Test";
+import ProductCard from "./ProductCard";
+import DiaperCalculator from "./DiaperCalculator";
 
 
-const FilterBoard = () => {
+const FilterBoard = ({products}) => {
   const router = useRouter();
   const pathname = "http://localhost:3000/products";
-  const searchParams = useSearchParams();
   const [selectedFilters, setSelectedFilters] = useState([]);
-  // const [filteredItems, setFilteredItems] = useState (<ProductCard/>)
 
   const createQueryString = (name, value) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams();
     params.set(name, value);
     return params.toString();
   };
-  console.log(test(selectedFilters));
   const handleSelectedFilters = (selectedCategory) => {
     setSelectedFilters((prevFilters) => {
       if (prevFilters.includes(selectedCategory)) {
@@ -35,24 +33,30 @@ const FilterBoard = () => {
       "filter",
       selectedFilters.join("_")
     );
-    router.push(pathname + "?" + queryString);
+    router.push(pathname + "?" + queryString , {scroll: false});
     } else {
-      router.push(pathname);
+      router.push(pathname, {scroll: false});
     }
   }, [selectedFilters]);
+  
 
   return (
     <>
-    <section className="filters">
-      <h2>Хэмжээгээр ангилах</h2>
+    
+    <div className="flex flex-row w-full">
+      <div className="flex basis-1/3">
+    <section className="filters ">
+      <div className="flex justify-between">
+      <h2>Хэмжээгээр</h2>
       <button
         onClick={() => {
           setSelectedFilters([]);
           router.push(pathname);
         }}
       >
-        <small className={selectedFilters.length>0? "underline" : "text-white"}>clear all</small>
+        <small className={selectedFilters.length>0? "clear" : "text-white"}>Clear all</small>
       </button>
+      </div>
  
       <ul>
         {filterItems.map((filterItem) => (
@@ -66,11 +70,18 @@ const FilterBoard = () => {
         ))}
       </ul>
     </section>
-    {/* <section>
-      {selectedFilters.map ((filteredItem) => (
-        <ProductCard/>
-      ))}
-    </section> */}
+    </div>
+    <div className="w-full flex flex-col">
+    <section className="card-container">
+      {selectedFilters.length >0 ? selectedFilters.map((product) => (
+        <ProductCard products={products} filtername={product}/>
+      )) : <ProductCard products={products} filtername=""/>}
+      </section>
+      <DiaperCalculator/>
+    </div>
+   
+    </div>
+    
     </>
   );
 };

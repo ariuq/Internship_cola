@@ -43,7 +43,7 @@ const changeShow = () => {
         <div className="flex">
         <div className="diaperBox">
             <div className="diaperBox-icon">            
-                <Image src={diaper} width={27} height={28}/>
+                <Image src={diaper} width={27} height={28} alt="diaper icon"/>
             </div>
             <p>Таны хүүхдийн живхний хэмжээ:</p>
             <div className="box-result flex items-center ">
@@ -62,7 +62,7 @@ const changeShow = () => {
         </div>
         <div className="diaperBox border-x">
             <div className="diaperBox-icon">
-            <Image src={sun} width={27} height={28}/>
+            <Image src={sun} width={27} height={28} alt=" sun icon"/>
             </div>
             <p>Өдөрт дунджаар:</p>
             <div className="box-result">
@@ -76,7 +76,7 @@ const changeShow = () => {
         </div>
         <div className="diaperBox">
             <div className="diaperBox-icon">
-            <Image src={calendar} width={27} height={28}/>
+            <Image src={calendar} width={27} height={28} alt="calendar icon"/>
             </div>
             <p>Дунджаар танд хэрэгтэй нийт живхний тоо:</p>
             <div className="box-result">

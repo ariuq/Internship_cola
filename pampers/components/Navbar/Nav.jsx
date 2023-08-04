@@ -26,6 +26,7 @@ return (
         className="mr-1.5"
         width={13}
         height={16}
+        alt="User icon"
         />
         Pampers Club
         </Link>
@@ -35,6 +36,7 @@ return (
         src="/assets/icons/search.svg"
         width={24}
         height={24}
+        alt="search icon"
         />
         </div>
   </nav>

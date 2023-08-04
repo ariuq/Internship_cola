@@ -24,9 +24,9 @@ const DiaperCalculator = () => {
         
         <div className="dsc-wrapper">
         <div className="diaper_size_icon">
-                <Image src="/assets/icons/button_left.svg" width={41} height={40}/>
-                <Image src={diaperSize} width={75} height={75}/>
-                <Image src="/assets/icons/button_right.svg" width={41} height={40}/>
+                <Image src="/assets/icons/button_left.svg" width={41} height={40} alt="button left"/>
+                <Image src={diaperSize} width={75} height={75} alt="diapersize"/>
+                <Image src="/assets/icons/button_right.svg" width={41} height={40} alt="button right"/>
             </div>
                 <h3>Живхний хэмжээ тооцоолуур</h3>
                 <p >Хүүхдийнхээ живхний хэмжээ болон өдөрт ойролцоогоор<br></br>хэдэн живх хэрэгтэйг мэдээрэй:</p>
@@ -37,7 +37,7 @@ const DiaperCalculator = () => {
                     {generateOptions(6,41)}
                     <option value={18.6}> 18.5 кг-аас дээш</option>
                 </select>
-                <Image className="arrow" src="/assets/icons/up_arrow.svg" width={18} height={18}/>
+                <Image className="arrow" src="/assets/icons/up_arrow.svg" width={18} height={18} alt="arrow"/>
                 </div>
         </div>  
         <Calculate weight={value}/>
