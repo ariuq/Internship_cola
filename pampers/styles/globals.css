@@ -11,7 +11,7 @@
 /* Nav Component */
 
 .orange_button {
-  @apply rounded-full bg-coral py-1.5 px-6 text-xl text-white font-semibold border-2 border-coral hover:text-coral hover:bg-white 
+  @apply rounded-full bg-coral py-1.5 px-6 text-lg text-white font-semibold border-2 border-coral hover:text-coral hover:bg-white 
 }
 
 
@@ -57,7 +57,7 @@
 }
 
 .club_btn {
-  @apply rounded-full w-40 h-10 ml-7 bg-bg-teal text-indigo transition-all duration-[1000ms] ease-in-out hover:bg-white hover:-translate-x-2 hover:w-44 text-center text-sm font-semibold font-comfortaa flex flex-row items-center justify-center ;
+  @apply rounded-full w-40 h-10  bg-bg-teal text-indigo transition-all duration-[1000ms] ease-in-out hover:bg-white text-center text-sm font-semibold font-comfortaa flex flex-row items-center justify-center ;
 }
 
 /*Panel Components*/
@@ -126,7 +126,7 @@
   @apply font-pacifico text-indigo text-3xl
 }
 .dsc_container {
-  @apply flex flex-col mt-4 
+  @apply flex flex-col mt-4 px-[15%] py-10
 }
 .card {
   @apply basis-[32%] shadow-md font-comfortaa text-indigo text-sm
@@ -223,3 +223,30 @@
   @apply inline-block relative border-b-2 border-indigo hover:border-transparent after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bg-indigo after:origin-bottom-left 
   hover:after:duration-1000 after:bottom-[-2px] after:left-0 hover:after:scale-x-100 hover:after:origin-bottom-left
 }
+.product-more-container {
+  @apply relative flex mt-3 shadow-[0_10px_15px_-3px_rgba(0,0,0,0.2)] w-[800px]
+}
+.product-more-name {
+  @apply bg-white fixed flex flex-col justify-center items-center h-[440px] right-[12%] ml-[800px] left-[12%] text-indigo font-comfortaa shadow-lg ease-in-out transition-all duration-500 
+}
+.product-more-name p {
+  @apply font-semibold text-3xl text-center pt-5 pb-10
+}
+.descriptions {
+  @apply w-[680px] text-indigo font-comfortaa mt-24
+}
+
+.desc {
+  @apply text-center pt-6
+}
+.desc h2 {
+  @apply text-3xl font-pacifico
+}
+.desc p {
+  @apply py-6
+}
+
+.unfixed {
+  @apply bg-red-500
+}
+

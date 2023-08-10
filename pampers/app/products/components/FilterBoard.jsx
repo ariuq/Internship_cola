@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useRouter} from "next/navigation";
 import { filterItems } from "./Filter";
 import ProductCard from "./ProductCard";
-import DiaperCalculator from "./DiaperCalculator";
 
 
 const FilterBoard = ({products}) => {
@@ -77,7 +76,6 @@ const FilterBoard = ({products}) => {
         <ProductCard products={products} filtername={product}/>
       )) : <ProductCard products={products} filtername=""/>}
       </section>
-      <DiaperCalculator/>
     </div>
    
     </div>

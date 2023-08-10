@@ -2,8 +2,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import NavLinks from "./NavLinks";
+import profileIcon from "../../public/assets/icons/profile.svg"
+import filledProfileIcon from "../../public/assets/icons/filledProfile.svg"
+import basket from "../../public/assets/icons/basket.svg"
+import {useLogin} from "@components/Login";
 
 const Nav = () => {
+const {isLogin, handleLogin} = useLogin();
 return (
   <nav className="navbar">
     <div className="nav_logo">
@@ -19,10 +24,23 @@ return (
         <div className="menu_items"><NavLinks/></div>
         
         <div className="list_items">
-        <div >
+        {isLogin ? (
+          <button onClick={handleLogin} className="club_btn">
+          <Image
+            src={filledProfileIcon}
+            className="mr-1.5"
+
+            width={13}
+            height={16}
+            alt="User icon"
+            />
+            My Profile
+            </button>
+        ): (
+          <div >
       <Link href="/registration" className="club_btn">
       <Image
-        src="/assets/icons/profile.svg"
+        src={profileIcon}
         className="mr-1.5"
         width={13}
         height={16}
@@ -31,10 +49,21 @@ return (
         Pampers Club
         </Link>
         </div>
+        )}
+        {isLogin ? (
+           <Link href="/cartPage">
+           <Image 
+           src={basket}
+           width={28}
+           height={26} style={{
+            marginTop: "5px"
+           }}/>
+           </Link>
+        ): null}
       <Image
         className="fill-white"
         src="/assets/icons/search.svg"
-        width={24}
+        width={26}
         height={24}
         alt="search icon"
         />
