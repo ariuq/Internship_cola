@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { toolLinks } from "./ToolLinks";
+import { toolLinks } from "../../utils/ToolLinks";
 import Image from "next/image";
 
 const ToolItem = () => {

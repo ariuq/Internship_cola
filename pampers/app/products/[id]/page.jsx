@@ -8,9 +8,8 @@ import ZoomingImage from "@components/ZoomingImage";
 import big2 from "../../../public/assets/images/product/4.webp";
 import smallBanner from "../../../public/assets/images/product/pampers.webp";
 import { useLogin } from "@components/Login";
-import { getTotalCartItems, getProductCartCount, addToCart } from "@components/cartHelper";
 
-const Page = ({params}) => {
+const Page = ({params: {id}}) => {
     const [isFixed, setFixed] = useState(true);
     const [isBannerVisible, setBannerVisible] = useState(true);
     const {isLogin, } = useLogin();
@@ -80,9 +79,9 @@ const Page = ({params}) => {
                 </div>
             )}
             <small className="text-light-indigo">Живх</small>
-            <p>{params.product.split("-").join(" ")}</p>
+            <p>{id.split("-").join(" ")}</p>
 
-<Button href={`${isLogin ? `/products/${params.product}` : '/registration'}`} title="Худалдаж авах"/>
+<Button href={`${isLogin ? `/products/${id}` : '/registration'}`} title="Худалдаж авах"/>
         </div>
      </div>
      <div className="descriptions">

@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react';
-import { socials } from './socials';
+import { socials } from '../../utils/Socials';
 
 const Footer = () => {
   

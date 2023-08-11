@@ -6,9 +6,11 @@ import profileIcon from "../../public/assets/icons/profile.svg"
 import filledProfileIcon from "../../public/assets/icons/filledProfile.svg"
 import basket from "../../public/assets/icons/basket.svg"
 import {useLogin} from "@components/Login";
+import { useSelector } from "react-redux";
 
 const Nav = () => {
 const {isLogin, handleLogin} = useLogin();
+const {loading, cartItems} = useSelector((state) => state.cart)
 return (
   <nav className="navbar">
     <div className="nav_logo">
@@ -58,6 +60,7 @@ return (
            height={26} style={{
             marginTop: "5px"
            }}/>
+           <span className="cart-badge">{loading? '' : cartItems.reduce((a, c)=> a + c.qty, 0)}</span>
            </Link>
         ): null}
       <Image

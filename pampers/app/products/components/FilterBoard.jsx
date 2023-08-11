@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from "react";
 import { useRouter} from "next/navigation";
-import { filterItems } from "./Filter";
+import { filterItems } from "../../../utils/Filter";
 import ProductCard from "./ProductCard";
 
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { links } from "./MyLinks";
+import { links } from "../../utils/MyLinks";
 import React from "react";
 
 const NavLinks = () => {
