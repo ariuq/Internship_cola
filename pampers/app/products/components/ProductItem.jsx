@@ -7,7 +7,7 @@ import AddToCart from "@components/AddToCart";
 const ProductItem = ({product}) => {
   return (
     <section key={product.id} className="card">
-                    <Link className="top-section"  href= {`/products/${product.productname.split(" ").join("-")}`}>
+                    <Link className="top-section"  href= {`/products/${product.id}`}>
                         <div className="product-image">                    
                             <HoveringImage src={pampersImage}/>
                         </div>

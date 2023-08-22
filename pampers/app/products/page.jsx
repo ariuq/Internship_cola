@@ -4,10 +4,9 @@ import FilterBoard from "./components/FilterBoard";
 import { fetchData} from "@utils/products";
 
 
+const page = async () => {
+    const products = await fetchData();
 
-const page = ({}) => {
-  fetchData()
-  .then(products => {
     return (
       <section>
         <div className="product_banner mb-7">
@@ -18,16 +17,11 @@ const page = ({}) => {
           <h1 className="productBannerDescription">Up to 100% Leak-Free Nights</h1>
         </div >
         <FilterBoard products={products}/>
-         </section>
-    )
-  })
-  .catch(error => {
-    return (
-      <div>error {error}</div>
-    )
-  }
-  )
+      </section>
+    );
   
-}
+};
+
 export default page;
+
 

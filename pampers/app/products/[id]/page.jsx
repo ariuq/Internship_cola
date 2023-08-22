@@ -1,6 +1,20 @@
-'use client';
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
+
+
+
+// const Page = ({params: {id}}) => {
+//     return (
+//         
+//     );
+// }
+
+// export default Page;
+
+'use client'
+import AddToCart from '@/components/AddToCart'
+import { fetchData } from '@/utils/products'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useState, useEffect } from 'react'
 import banner from "../../../public/assets/images/product/360banner.webp"
 import Button from "@components/Button";
 import big1 from "../../../public/assets/images/product/1.webp"
@@ -9,8 +23,9 @@ import big2 from "../../../public/assets/images/product/4.webp";
 import smallBanner from "../../../public/assets/images/product/pampers.webp";
 import { useLogin } from "@components/Login";
 
-const Page = ({params: {id}}) => {
-    const [isFixed, setFixed] = useState(true);
+export default  function ProductDetailPage({ params: { id } }) {
+    const [product, setProduct] = useState(null);
+        const [isFixed, setFixed] = useState(true);
     const [isBannerVisible, setBannerVisible] = useState(true);
     const {isLogin, } = useLogin();
     useEffect (() => {
@@ -41,10 +56,39 @@ const Page = ({params: {id}}) => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+
+    useEffect(() => {
+        async function fetchProduct() {
+            try {
+              const products = await fetchData();
+              console.log("Allll", products);
+              const selectedProduct = products.find((x) => x.id == id);
+              console.log("selecteddd", selectedProduct)
+                
+              if (selectedProduct) {
+                setProduct(selectedProduct);
+              } else {
+                console.log('Product not found');
+              }
+            } catch (error) {
+              console.error('Error fetching product:', error);
+            }
+          }
+      
+          fetchProduct();
+    }, [id]);
+
+    if (!product) {
+      return <div>Бүтээгдэхүүн олдсонгүй</div>
+    }
     return (
+
         <section>
-        <div className="product-more-container">
-            <div className="product-banner-image">
+          <div className="py-2">
+          <Link href="/products">Буцах</Link>
+        </div>
+       <div className="product-more-container">
+             <div className="product-banner-image">
                 <Image src={banner} style={{
             width: "800px",
             height: "440px",
@@ -79,9 +123,11 @@ const Page = ({params: {id}}) => {
                 </div>
             )}
             <small className="text-light-indigo">Живх</small>
-            <p>{id.split("-").join(" ")}</p>
+            <p>{product.productname}</p>
+      <AddToCart product={product} showQty={false} increasePerClick={true}>
+      <Button href={`${isLogin ? `/products/${id}` : '/registration'}`} title="Худалдаж авах"/>
+      </AddToCart>
 
-<Button href={`${isLogin ? `/products/${id}` : '/registration'}`} title="Худалдаж авах"/>
         </div>
      </div>
      <div className="descriptions">
@@ -96,11 +142,6 @@ const Page = ({params: {id}}) => {
         <ZoomingImage src={big2}/>
      </div>
      </div>
-
-
-     
      </section>
-    );
+    )
 }
-
-export default Page;

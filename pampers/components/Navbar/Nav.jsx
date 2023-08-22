@@ -54,13 +54,13 @@ return (
         )}
         {isLogin ? (
            <Link href="/cartPage">
+            <span className="cart-badge">{loading? '' : cartItems.reduce((a, c)=> a + c.qty, 0)}</span>
            <Image 
            src={basket}
            width={28}
            height={26} style={{
             marginTop: "5px"
            }}/>
-           <span className="cart-badge">{loading? '' : cartItems.reduce((a, c)=> a + c.qty, 0)}</span>
            </Link>
         ): null}
       <Image
